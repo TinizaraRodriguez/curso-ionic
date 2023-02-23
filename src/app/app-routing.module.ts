@@ -11,6 +11,14 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
+  {
+    path: 'review-list',
+    loadChildren: () => import('./review-list/review-list.module').then( m => m.ReviewListPageModule)
+  },
+  {
+    path: 'review-edition',
+    loadChildren: () => import('./review-edition/review-edition.module').then( m => m.ReviewEditionPageModule)
+  },
 ];
 
 @NgModule({

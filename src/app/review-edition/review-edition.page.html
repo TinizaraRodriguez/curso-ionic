@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Edicion de reseñas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="!!review">
+    <ion-label>Description</ion-label>
+    <ion-textarea name="description" [autoGrow]="true" [(ngModel)]="review.description">
+    </ion-textarea>
+
+    <ion-button (click)="save()" color="primary">Guardar</ion-button>
+  </div>
+
+</ion-content>

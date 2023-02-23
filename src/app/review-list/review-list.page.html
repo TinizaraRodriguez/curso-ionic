@@ -1,0 +1,12 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Listado</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngFor="let review of reviews" class="review" (click)='save(review)'>
+    {{review.description}}
+  </div>
+
+</ion-content>
