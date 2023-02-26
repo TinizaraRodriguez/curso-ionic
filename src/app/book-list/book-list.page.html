@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Libros</ion-title>
+    <ion-button slot="end">
+      <ion-icon slot="icon-only" name="add"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let book of books" >
+      <ion-card>
+        <ion-img class="portada" src="{{book.cover}}"></ion-img>
+        <ion-card-header>
+          <ion-card-title class="titulo">{{ book.name}}</ion-card-title>
+          <ion-card-subtitle class="autor">{{ book.author}}</ion-card-subtitle>
+        </ion-card-header>
+      </ion-card>
+    </ion-item>
+  </ion-list>
+</ion-content>

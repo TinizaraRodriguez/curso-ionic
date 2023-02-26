@@ -8,7 +8,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'book-list',
     pathMatch: 'full'
   },
   {
@@ -18,6 +18,10 @@ const routes: Routes = [
   {
     path: 'review-edition',
     loadChildren: () => import('./review-edition/review-edition.module').then( m => m.ReviewEditionPageModule)
+  },
+  {
+    path: 'book-list',
+    loadChildren: () => import('./book-list/book-list.module').then( m => m.BookListPageModule)
   },
 ];
 

@@ -22,6 +22,4 @@ export class ReviewService {
   save(review: Review){
     return this.httpClient.put('http://localhost:8080/reviews/' + review.id, review )
   }
-
-
 }
