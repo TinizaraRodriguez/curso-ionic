@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-add-book',
@@ -7,7 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddBookPage implements OnInit {
 
-  constructor() { }
+  constructor(private navCtrl : NavController) { }
+
+  back() {
+    this.navCtrl.navigateForward('book-list');
+
+  }
 
   ngOnInit() {
   }

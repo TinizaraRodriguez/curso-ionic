@@ -8,6 +8,8 @@ import { Book } from '../model/Book';
 })
 export class BooksService {
 
+  
+
   constructor(private httpClient: HttpClient) { }
   newBook = new EventEmitter<Book>();
   deletedBook = new EventEmitter<number>();
@@ -19,6 +21,10 @@ export class BooksService {
     params = params.append("sortDir", 'desc');
     params = params.append("sort", 'id');
     return this.httpClient.get<Book[]>('http://localhost:8080/books', {params});
+  }
+
+  findById(bookId: string | null): Observable<Book> {
+    return this.httpClient.get<Book>('http://localhost:8080/books/' + bookId);
   }
 
   getBooks(size? :number): Observable<Book[]> {
@@ -51,4 +57,6 @@ export class BooksService {
       });
     });
   }
+
+
 }

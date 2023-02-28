@@ -11,31 +11,30 @@ import { BooksService } from '../services/books.service';
 })
 export class BookListPage implements OnInit {
 
-  books: Book[] = [];
-  constructor(private bookService : BooksService, private navCtrl : NavController) { }
+  books: Book[] =  [];
+  book: Book = {
+
+  };
+
+  constructor(private bookService: BooksService, private navCtrl: NavController) { }
 
   ngOnInit() {
-    this.bookService.findAll().subscribe(response => { 
-      this.books = response
+    this.bookService.findAll().subscribe(response => {
+      this.books = response;
     });
   }
 
-  bookDetails(book : Book){
-    const navExtra : NavigationExtras ={
+  bookDetails(book: Book): void {
+    const navigationExtras: NavigationExtras = {
       queryParams: {
         book
       }
-    }
-    this.navCtrl.navigateForward('book-details', navExtra);
+    };
+    this.navCtrl.navigateForward('book-details', navigationExtras)
   }
 
-  addBooks(){
-    const navExtra : NavigationExtras ={
-    
-    }
-    this.navCtrl.navigateForward('add-book', navExtra);
+  addBooks() {
+    this.navCtrl.navigateForward('add-book');
   }
 
 }
-
-
