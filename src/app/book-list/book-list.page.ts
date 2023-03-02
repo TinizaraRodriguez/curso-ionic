@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { NavigationExtras } from '@angular/router';
+import { ActivatedRoute, NavigationExtras } from '@angular/router';
 import { NavController } from '@ionic/angular';
 import { Book } from '../model/Book';
+import { Review } from '../model/Review';
 import { BooksService } from '../services/books.service';
+import { ReviewService } from '../services/review.service';
 
 @Component({
   selector: 'app-book-list',
@@ -16,22 +18,31 @@ export class BookListPage implements OnInit {
 
   };
 
-  constructor(private bookService: BooksService, private navCtrl: NavController) { }
+  reviews: Review[] = [];
+
+
+  constructor(private reviewsService: ReviewService ,private bookService: BooksService, private navCtrl: NavController) { }
 
   ngOnInit() {
     this.bookService.findAll().subscribe(response => {
       this.books = response;
     });
+
+    this.reviewsService.findAll().subscribe(params => {
+      this.reviews = params;
+    })
   }
 
   bookDetails(book: Book): void {
     const navigationExtras: NavigationExtras = {
       queryParams: {
-        book
+        book,
+        reviews: this.reviews
       }
     };
     this.navCtrl.navigateForward('book-details', navigationExtras)
   }
+
 
   addBooks() {
     this.navCtrl.navigateForward('add-book');

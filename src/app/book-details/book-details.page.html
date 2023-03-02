@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Libros</ion-title>
+    <ion-title>Detalles del libro</ion-title>
     <ion-button slot="start" (click)='back()'>
       <ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon>
     </ion-button>
@@ -8,17 +8,29 @@
 </ion-header>
 
 <ion-content>
-  <ion-list>
-    <ion-item>
-      <ion-card>
-        <ion-img class="portada" src="{{book.cover}}" ></ion-img>
+  <ion-item>
+    <ion-card>
+      <ion-img class="portada" src="{{book.cover}}" ></ion-img>
+      <ion-card-header>
+        <ion-card-title class="titulo">{{ book.name}}</ion-card-title>
+        <ion-card-subtitle class="autor">{{ book.author}}</ion-card-subtitle>
+        <ion-card-subtitle class="autor">{{ book.published}}</ion-card-subtitle>
+        <ion-card-subtitle class="autor">{{ book.isbn}}</ion-card-subtitle>
+      </ion-card-header>
+    </ion-card>
+  </ion-item>
+      
+  <ion-item>
+    <ion-card>
+      <ion-card-title class="reseña">Reseñas</ion-card-title>
+      <div *ngFor="let review of bookReviews">
         <ion-card-header>
-          <ion-card-title class="titulo">{{ book.name}}</ion-card-title>
-          <ion-card-subtitle class="autor">{{ book.author}}</ion-card-subtitle>
-          <ion-card-subtitle class="autor">{{ book.published}}</ion-card-subtitle>
-          <ion-card-subtitle class="autor">{{ book.isbn}}</ion-card-subtitle>
+          <ion-card-title class="tituloReview">{{ review.author }} </ion-card-title>
+          <ion-card-subtitle class="autor">{{ review.description }}</ion-card-subtitle>          
         </ion-card-header>
-      </ion-card>
-    </ion-item>
-  </ion-list>
+      </div>
+    </ion-card>
+  </ion-item>
 </ion-content>
+
+
