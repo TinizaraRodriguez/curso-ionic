@@ -10,12 +10,19 @@ export class AddBookPage implements OnInit {
 
   constructor(private navCtrl : NavController) { }
 
-  back() {
+  ngOnInit() {
+  }
+
+  createBook() {
+    
     this.navCtrl.navigateForward('book-list');
 
   }
 
-  ngOnInit() {
+  back() {
+    this.navCtrl.navigateForward('book-list');
   }
+
+  
 
 }

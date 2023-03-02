@@ -1,12 +1,36 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>Añadir libro</ion-title>
-    <ion-button slot="start" (click)='back()'>
-      <ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon>
-    </ion-button>
+    <ion-button fill="clear" size="default" (click)='back()' slot="start"><ion-icon name="arrow-back-outline"></ion-icon></ion-button>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-card>
+    <ion-list>
+      <ion-item id="custom-item" counter="true">
+        <ion-label position="floating">Titulo</ion-label>
+        <ion-input [clearInput]="true" type="text"  placeholder="Introduce el titulo"></ion-input>
+      </ion-item>
+  
+      <ion-item id="custom-item" counter="true">
+        <ion-label position="floating">Autor</ion-label>
+        <ion-input [clearInput]="true" type="text" placeholder="Introduce el autor"></ion-input>
+      </ion-item>
+
+      <ion-item id="custom-item" counter="true">
+        <ion-label position="floating">Fecha de publicacion</ion-label>
+        <ion-input [clearInput]="true" type="number" placeholder="Introduce fecha de publicacion"></ion-input>
+      </ion-item>
+  
+      <ion-item id="custom-item" counter="true">
+        <ion-label position="floating">ISBN</ion-label>
+        <ion-input [clearInput]="true" type="number" maxlength="10" placeholder="Introduce el ISBN"></ion-input>
+      </ion-item>
+
+    </ion-list>
+  </ion-card>
+
+  <ion-button fill="outline" size="default" class="botonCrear" (click)="createBook()">Crear libro </ion-button>
 
 </ion-content>
