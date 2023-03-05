@@ -7,9 +7,6 @@ import { Book } from '../model/Book';
   providedIn: 'root'
 })
 export class BooksService {
-
-  
-
   constructor(private httpClient: HttpClient) { }
   newBook = new EventEmitter<Book>();
   deletedBook = new EventEmitter<number>();
@@ -36,14 +33,10 @@ export class BooksService {
     return this.httpClient.get<Book[]>('http://localhost:8080/books', { params });
   }
 
-  createBook(book: Book) {
-    return new Promise(resolve => {
-      this.httpClient.post('http://localhost:8080/books', book).subscribe((response: Book) => {
-        this.newBook.emit(response);
-        resolve(true);
-      });
-    });
+  createBook(book: Book): Observable<Book> {
+    return this.httpClient.post<Book>('http://localhost:8080/books', book);
   }
+  
 
   updateBook(book: Book) {
     return this.httpClient.put('http://localhost:8080/books/' + book.id, book);

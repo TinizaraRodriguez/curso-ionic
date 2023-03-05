@@ -9,25 +9,34 @@
   <ion-card>
     <ion-list>
       <ion-item id="custom-item" counter="true">
-        <ion-label position="floating">Titulo</ion-label>
+        <ion-label>Titulo</ion-label>
         <ion-input [clearInput]="true" type="text"  placeholder="Introduce el titulo"></ion-input>
       </ion-item>
   
       <ion-item id="custom-item" counter="true">
-        <ion-label position="floating">Autor</ion-label>
+        <ion-label>Autor</ion-label>
         <ion-input [clearInput]="true" type="text" placeholder="Introduce el autor"></ion-input>
       </ion-item>
 
       <ion-item id="custom-item" counter="true">
-        <ion-label position="floating">Fecha de publicacion</ion-label>
-        <ion-input [clearInput]="true" type="number" placeholder="Introduce fecha de publicacion"></ion-input>
-      </ion-item>
-  
-      <ion-item id="custom-item" counter="true">
-        <ion-label position="floating">ISBN</ion-label>
-        <ion-input [clearInput]="true" type="number" maxlength="10" placeholder="Introduce el ISBN"></ion-input>
+        <ion-label >ISBN</ion-label>
+        <ion-input [clearInput]="true" type="number" placeholder="Introduce el ISBN"></ion-input>
       </ion-item>
 
+      <ion-item id="publicacion" counter="true">
+        <ion-label position="floating" style="margin-right: 10px;">Fecha de publicación</ion-label>
+        <ion-button id="botonFlecha" fill="clear" size="default" style="margin-left: 150px;" (click)="toggleDateTime()">
+          <ion-icon *ngIf="!mostrarDateTime" name="arrow-down-outline"></ion-icon>
+          <ion-icon *ngIf="mostrarDateTime" name="arrow-up-outline"></ion-icon>
+        </ion-button>
+        <ion-datetime *ngIf="mostrarDateTime"></ion-datetime>
+      </ion-item>
+
+      <ion-item id="custom-item" counter="true" > 
+        <ion-label position="floating" >Seleccionar imagen</ion-label>
+        <ion-input type="file" accept="image/*" ></ion-input>
+      </ion-item>
+      
     </ion-list>
   </ion-card>
 

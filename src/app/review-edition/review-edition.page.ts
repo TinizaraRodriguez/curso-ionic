@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Review } from '../model/Review';
+import { NavController } from '@ionic/angular';
 import { ReviewService } from '../services/review.service';
+import { Book } from '../model/Book';
 
 @Component({
   selector: 'app-review-edition',
@@ -10,20 +12,30 @@ import { ReviewService } from '../services/review.service';
 })
 export class ReviewEditionPage implements OnInit {
 
-  review?: Review;
+  book: Book = {
 
-  constructor(private route:ActivatedRoute, private reviewService: ReviewService) { }
-
-  ngOnInit() {
-    this.route.queryParams.subscribe(params => {
-      this.review = params['review']
-    });
   }
 
-  save() {
-    if(!!this.review){
-      this.reviewService.save(this.review);
-    }
+  allReviews: Review[] = [];
+
+  bookReviews: Review[] = [];
+
+  constructor(private navCtrl: NavController,private route:ActivatedRoute, private reviewService: ReviewService) { }
+
+  ngOnInit() {
+    this.viewReview();
+  }
+  
+  viewReview() {
+    this.allReviews.forEach( review=> {
+      if (review.book.id === this.book.id){
+        this.bookReviews.push(review)
+      }
+    })
+  }
+
+  back() {
+    this.navCtrl.navigateForward('book-list');
   }
 
 }

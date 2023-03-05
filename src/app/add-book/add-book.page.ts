@@ -1,5 +1,9 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { NavController } from '@ionic/angular';
+import { NavigationExtras } from '@angular/router';
+import { NavController, ToastController } from '@ionic/angular';
+import { Book } from '../model/Book';
+import { BooksService } from '../services/books.service';
 
 @Component({
   selector: 'app-add-book',
@@ -8,20 +12,34 @@ import { NavController } from '@ionic/angular';
 })
 export class AddBookPage implements OnInit {
 
-  constructor(private navCtrl : NavController) { }
+  books: Book[] =  [];
+  book: Book = {};
+  mostrarDateTime: boolean = false;
+
+  constructor(private navCtrl : NavController, private bookService : BooksService,private http: HttpClient, private toastController: ToastController) { }
 
   ngOnInit() {
+
+    
   }
+
 
   createBook() {
-    
-    this.navCtrl.navigateForward('book-list');
-
+    this.bookService.createBook(this.book)
+      .subscribe((response) => {
+        console.log(response);
+      });
   }
+
+  toggleDateTime() {
+    this.mostrarDateTime = !this.mostrarDateTime;
+  }
+
 
   back() {
     this.navCtrl.navigateForward('book-list');
   }
+
 
   
 

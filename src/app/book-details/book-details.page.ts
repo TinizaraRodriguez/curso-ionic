@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, NavigationExtras } from '@angular/router';
 import { NavController } from '@ionic/angular';
 import { Book } from '../model/Book';
 import { Review } from '../model/Review';
@@ -50,6 +50,17 @@ export class BookDetailsPage implements OnInit {
       }
     })
   }
+
+  delete() {
+    if (this.book.id === undefined) {
+      console.error('El ID del libro es undefined');
+      return;
+    }
+    this.bookService.deleteBook(this.book.id);
+  }
+  
+  
+
 
 
   back() {
